@@ -1,5 +1,13 @@
 #include "sort.h"
 
+/**
+*shell_sort - sorts an array of integers in ascending order
+using the Shell sort algorithm, using the Knuth sequence
+*@array: the array
+*@size: the size
+*Return: Nothing
+*/
+
 void shell_sort(int *array, size_t size)
 {
 	size_t h = 1, i, n;
