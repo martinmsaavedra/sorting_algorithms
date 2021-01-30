@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "fstream": "c",
+        "functional": "c",
+        "istream": "c",
+        "new": "c",
+        "ostream": "c",
+        "sstream": "c",
+        "typeinfo": "c"
+    }
+}
