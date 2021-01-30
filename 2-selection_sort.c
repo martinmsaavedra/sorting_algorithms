@@ -12,6 +12,9 @@ void selection_sort(int *array, size_t size)
 	size_t i = 0, j = 0, pos = 0;
 	int dancer = 0, count = 0;
 
+	if (array == NULL || size < 2)
+        return;
+
 	for (i = 0; i < size; i++)
 	{
 		count = 0;

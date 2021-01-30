@@ -12,6 +12,9 @@ void insertion_sort_list(listint_t **list)
 	listint_t *aux = NULL, *head = NULL, *tmp1 = NULL, *tmp2 = NULL;
 	int count = 0;
 
+	if (!list)
+		return;
+
 	while (1)
 	{
 		count = 0;
