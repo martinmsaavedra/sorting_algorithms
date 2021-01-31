@@ -32,5 +32,6 @@ void quicksort(int *array, ssize_t start, ssize_t next, size_t size);
 void swap(int *a, int *b);
 int partition(int *array, ssize_t start, ssize_t next, size_t size);
 void shell_sort(int *array, size_t size);
+void counting_sort(int *array, size_t size);
 
 #endif
