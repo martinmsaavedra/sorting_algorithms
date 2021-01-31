@@ -13,7 +13,7 @@ void selection_sort(int *array, size_t size)
 	int dancer = 0, count = 0;
 
 	if (array == NULL || size < 2)
-        return;
+		return;
 
 	for (i = 0; i < size; i++)
 	{
