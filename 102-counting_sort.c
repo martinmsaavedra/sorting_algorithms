@@ -5,14 +5,17 @@ void counting_sort(int *array, size_t size)
     size_t j = 0;
     int max = 0, i = 0, *count, counter, total = 0, l = 0;
 
-    for (i = 0; i < (int)size; i++) 
+    if (array == NULL || size < 2)
+        return;
+    
+    for (i = 0; i < (int)size; i++)
     {
         if (max < array[i])
             max = array[i];
     }
 
     count = malloc(sizeof(int) * max + 1);
-    if (!count)
+    if (count == NULL)
         return;
     
     for (i = 0; i < (int)size; i++)
@@ -42,15 +45,12 @@ void counting_sort(int *array, size_t size)
         if (count[i] != 0)
         {
             for (j = 0; j < (size_t)count[i]; j++)
-                {
-                    array[l] = i;
-                    l++;
-                }
+            {
+                array[l] = i;
+                l++;
+            }
         }
     }
 
     free(count);
-    /*for (m = 0 ; m < 10; m++)
-        printf("%d ", array[m]);*/
-
 }
