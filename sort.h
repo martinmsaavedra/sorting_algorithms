@@ -34,7 +34,7 @@ int partition(int *array, ssize_t start, ssize_t next, size_t size);
 void shell_sort(int *array, size_t size);
 void counting_sort(int *array, size_t size);
 int find_max(int *array, size_t size);
-int * define_array(int max, size_t size);
+int *define_array(int max, size_t size);
 void merge_sort(int *array, size_t size);
 int LSD(int *array, size_t size);
 int largest_int(int *array, size_t size);
