@@ -3,7 +3,7 @@
 void counting_sort(int *array, size_t size)
 {
 	size_t j = 0;
-	int max = 0, i = 0, *count, counter = 0, total = 0, l = 0;
+	int max = 0, i = 0, *count = NULL, counter = 0, total = 0, l = 0;
 
 	if (array == NULL || size < 2)
 		return;
