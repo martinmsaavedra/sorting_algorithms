@@ -16,6 +16,10 @@ void insertion_sort_list(listint_t **list)
 
 	aux = *list;
 	head = *list;
+
+	if (aux->next == NULL)
+		return;
+	
 	while (aux->next)
 	{
 		if (aux->n > aux->next->n)
