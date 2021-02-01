@@ -83,7 +83,13 @@ void swap_nodes(listint_t **list, listint_t *node_A, listint_t *node_B)
 	}
 	else
 	{
-		swap_nodes2(list, node_A, node_B);
+		listint_t *t1 = node_A->prev;
+		listint_t *t2 = node_B->next;
+
+		node_A->next = t2;
+		node_B->prev = t1;
+		t1->next = node_B;
+		t2->prev = node_A;
 		return;
 	}
 }
