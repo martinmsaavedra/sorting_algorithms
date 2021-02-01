@@ -25,11 +25,13 @@ void shell_sort(int *array, size_t size)
 	{
 		for (i = h; i < size; i++)
 		{
-			for (n = i; n > 0 && array[n] < array[n - h]; n -= h)
+			n = i;
+			while (n >= h && array[n] < array[n - h])
 			{
 				number = array[n];
 				array[n] = array[n - h];
 				array[n - h] = number;
+				n -= h;
 			}
 		}
 		print_array(array, size);
