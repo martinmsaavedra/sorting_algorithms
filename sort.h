@@ -42,5 +42,5 @@ int is_in(int *array, size_t size, int num);
 void radix_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 void heapify(int *array, size_t size, size_t base, size_t root);
-
+void swap_nodes2(listint_t **list, listint_t *node_A, listint_t *node_B);
 #endif
