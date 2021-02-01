@@ -100,7 +100,7 @@ void swap_nodes(listint_t **list, listint_t *node_A, listint_t *node_B)
  * @node_A: Node A
  * @node_B: Node B
  * Return: Nothing
- */
+ 
 
 void swap_nodes2(listint_t **list, listint_t *node_A, listint_t *node_B)
 {
@@ -112,3 +112,4 @@ void swap_nodes2(listint_t **list, listint_t *node_A, listint_t *node_B)
 	t1->next = node_B;
 	t2->prev = node_A;
 }
+*/
