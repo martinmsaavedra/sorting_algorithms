@@ -19,7 +19,7 @@ void insertion_sort_list(listint_t **list)
 
 	if (aux->next == NULL)
 		return;
-	
+
 	while (aux->next)
 	{
 		if (aux->n > aux->next->n)
@@ -28,7 +28,7 @@ void insertion_sort_list(listint_t **list)
 			print_list(head);
 			aux = aux->prev;
 
-			while (aux->prev->n > aux->n)
+			while (aux->prev->n > aux->n && aux)
 			{
 				swap_nodes(list, aux->prev, aux);
 				head = *list;
