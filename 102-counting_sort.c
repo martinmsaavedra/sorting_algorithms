@@ -1,5 +1,12 @@
 #include "sort.h"
 
+/**
+ * counting_sort - order an array using the algorithm counting_sort
+ * @array: the array
+ * @size: the size of the array
+ * Return: Nothing
+ */
+
 void counting_sort(int *array, size_t size)
 {
 	size_t j = 0;
@@ -35,6 +42,12 @@ void counting_sort(int *array, size_t size)
 	free(count);
 }
 
+/**
+ * find_max - find max integer from array given
+ * @array: the array
+ * @size: the size of the array
+ * Return: max int from array
+ */
 int find_max(int *array, size_t size)
 {
 	int i = 0, max = 0;
@@ -46,7 +59,12 @@ int find_max(int *array, size_t size)
 	}
 	return (max);
 }
-
+/**
+ * define_array - allocates array
+ * @max: max numbers of array
+ * @size: the size of the array
+ * Return: array malloced
+ */
 int *define_array(int max, size_t size)
 {
 	int i = 0;
