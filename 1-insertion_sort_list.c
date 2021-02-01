@@ -19,7 +19,6 @@ void insertion_sort_list(listint_t **list)
 
 	if (aux->next == NULL)
 	{
-		print_list(head);
 		return;
 	}
 		
