@@ -11,21 +11,15 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *aux = NULL, *head = NULL;
 
-	if (!list || !(*list))
+	if (!list || !(*list) || (!(*list)->next))
 		return;
 
 	aux = *list;
 	head = *list;
 
-	if (aux->next == NULL)
-	{
-		return;
-	}
-		
-
 	while (aux->next)
 	{
-		if (aux->n > aux->next->n)
+		if (aux->n > aux->next->n && aux->next)
 		{
 			swap_nodes(list, aux, aux->next);
 			print_list(head);
