@@ -25,7 +25,7 @@ void insertion_sort_list(listint_t **list)
 			print_list(head);
 			aux = aux->prev;
 
-			while (aux->prev->n > aux->n && aux)
+			while (aux->prev->n > aux->n && aux->prev)
 			{
 				swap_nodes(list, aux->prev, aux);
 				head = *list;
