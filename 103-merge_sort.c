@@ -30,7 +30,7 @@ void merge(int *arr, int p, int q, int r)
     int i, j, k, count = 0, index = 0;
     int *L, *M;
 
-    printf("Mergin...\n");
+    printf("Merging...\n");
     L = malloc(sizeof(int) * n1);
     M = malloc(sizeof(int) * n2);
     printf("[left]: ");
