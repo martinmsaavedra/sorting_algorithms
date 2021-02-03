@@ -21,10 +21,11 @@ void swap(int *a, int *b)
  * @array: array to heapify
  * @size: size of array
  * @i: idx to check if its larger
+ * @size_print: size for printing
  */
 
 
-void heapify(int *array, size_t size, size_t i)
+void heapify(int *array, size_t size, size_t i, size_t size_print)
 {
 	/**
 	 * Heapify proceso de crear la estructura de datos HEAP a partir
@@ -46,8 +47,8 @@ void heapify(int *array, size_t size, size_t i)
 	if (largest != i)
 	{
 		swap(&array[i], &array[largest]);
-		heapify(array, size, largest);
-		print_array(array, size);
+		heapify(array, size, largest, size_print);
+		print_array(array, size_print);
 	}
 }
 
@@ -68,12 +69,12 @@ void heap_sort(int *array, size_t size)
 	 * Cada Nodo es i, vas disminuyendo para ir de arriba hacia abajo
 	 */
 	for (i = size / 2 - 1; i >= 0; i--)
-		heapify(array, size, i);
+		heapify(array, size, i, size);
 	/*Heap sort*/
 	for (i = size - 1; i >= 0; i--)
 	{
 		swap(&array[0], &array[i]);
-		heapify(array, i, 0);
+		heapify(array, i, 0, size);
 		print_array(array, size);
 	}
 }
