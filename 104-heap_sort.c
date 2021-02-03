@@ -1,13 +1,11 @@
 #include "sort.h"
 
 /**
- * swap_i -  swap position of two elements
- * @array: array
- * @size: size of array
+ * swap -  swap position of two elements
  * @a: element to swap with b
  * @b: element to swap with a
  */
-void swap_i(int *array, size_t size, int *a, int *b)
+void swap(int *a, int *b)
 {
 	int temp = *a;
 
@@ -15,7 +13,6 @@ void swap_i(int *array, size_t size, int *a, int *b)
 	{
 		*a = *b;
 		*b = temp;
-		print_array(array, size);
 	}
 }
 
@@ -29,8 +26,10 @@ void swap_i(int *array, size_t size, int *a, int *b)
 
 void heapify(int *array, size_t size, size_t i)
 {
-	/**Heapify proceso de crear la estructura de datos HEAP a partir
-	 *de una arbol binario.*/
+	/**
+	 * Heapify proceso de crear la estructura de datos HEAP a partir
+	 *de una arbol binario.
+	 */
 	size_t largest = i;
 	/*hijo izquierdo*/
 	size_t left = 2 * i + 1;
@@ -46,7 +45,8 @@ void heapify(int *array, size_t size, size_t i)
 	/*cambiar y seguir haciendo heapyfy si la root no es el mayor*/
 	if (largest != i)
 	{
-		swap_i(array, size, &array[i], &array[largest]);
+		swap(&array[i], &array[largest]);
+		print_array(array, size);
 		heapify(array, size, largest);
 	}
 }
@@ -65,13 +65,15 @@ void heap_sort(int *array, size_t size)
 
 	/**
 	 * Empezar por el primer indice del nodo ->non-leaf n/2 - 1.
-	 * Cada Nodo es i, vas disminuyendo para ir de arriba hacia abajo*/
+	 * Cada Nodo es i, vas disminuyendo para ir de arriba hacia abajo
+	 */
 	for (i = size / 2 - 1; i >= 0; i--)
 		heapify(array, size, i);
 	/*Heap sort*/
 	for (i = size - 1; i >= 0; i--)
 	{
-		swap_i(array, size, &array[0], &array[i]);
+		swap(&array[0], &array[i]);
+		print_array(array, size);
 		heapify(array, i, 0);
 	}
 }
