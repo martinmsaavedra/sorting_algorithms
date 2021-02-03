@@ -45,7 +45,7 @@ int largest_int(int *array, size_t size);
 int is_in(int *array, size_t size, int num);
 void radix_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
-void heapify(int *array, size_t size, size_t i, size_t ac_size);
+void heapify(int *array, size_t size, size_t i);
 void swap_nodes2(listint_t **list, listint_t *node_A, listint_t *node_B);
 void cocktail_sort_list(listint_t **list);
 void quick_sort_hoare(int *array, size_t size);
