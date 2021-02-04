@@ -24,12 +24,11 @@ void swap(int *a, int *b)
  * @size_print: size for printing
  */
 
-
 void heapify(int *array, size_t size, size_t i, size_t size_print)
 {
 	/**
 	 * Heapify proceso de crear la estructura de datos HEAP a partir
-	 *de una arbol binario.
+	 * de una arbol binario.
 	 */
 	size_t largest = i;
 	/*hijo izquierdo*/
@@ -37,9 +36,10 @@ void heapify(int *array, size_t size, size_t i, size_t size_print)
 	/*hijo derecho*/
 	size_t right = 2 * i + 2;
 
-
+	/*si izq o derecha mayor a size, quiere decir que no exite tal hijo*/
 	if (left < size && array[left] > array[largest])
 		largest = left;
+
 	if (right < size && array[right] > array[largest])
 		largest = right;
 
@@ -68,7 +68,7 @@ void heap_sort(int *array, size_t size)
 	 * Empezar por el primer indice del nodo ->non-leaf n/2 - 1.
 	 * Cada Nodo es i, vas disminuyendo para ir de arriba hacia abajo
 	 */
-	for (i = size / 2 - 1; i >= 0; i--)
+	for (i = size / 2; i >= 0; i--)
 		heapify(array, size, i, size);
 	/*Heap sort*/
 	for (i = size - 1; i >= 0; i--)

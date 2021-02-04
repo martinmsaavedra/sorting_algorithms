@@ -37,6 +37,59 @@ void mergeSort(int *array, size_t left, size_t right)
  * @q: middle of the array
  * @r: right index of the array
  */
+void merge(int list[], size_t low, size_t mid, size_t high)
+{
+	size_t i, mi, k, lo;
+	int temp[50];
+
+	lo = low;
+	i = low;
+	mi = mid + 1;
+
+	printf("Merging...\n");
+	
+	while ((lo <= mid) && (mi <= high))
+	{
+		if (list[lo] <= list[mi])
+		{
+			temp[i] = list[lo];
+			lo++;
+			
+		}
+		else
+		{
+			temp[i] = list[mi];
+			mi++;
+		}
+		i++;
+	}
+	if (lo > mid)
+	{
+		for (k = mi; k <= high; k++)
+		{
+			temp[i] = list[k];
+			i++;
+		}
+	}
+	else
+	{
+		for (k = lo; k <= mid; k++)
+		{
+			temp[i] = list[k];
+			i++;
+		}
+	}
+	for (k = low; k <= high; k++)
+	{
+		list[k] = temp[k];
+	}
+	printf("[left]: ");
+	print_array(temp + lo, mi - lo);
+	printf("[right]: ");
+	/*print_array(temp + mi, lo - mi);*/
+}
+
+/*
 void merge(int *arr, int p, int q, int r)
 {
 	int n1 = q - p + 1;
@@ -107,3 +160,4 @@ void merge(int *arr, int p, int q, int r)
 			printf("%d, ", arr[index]);
 	}
 }
+*/
