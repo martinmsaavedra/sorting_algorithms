@@ -1,163 +1,96 @@
 #include "sort.h"
+
 /**
- * merge_sort - merge sort main function
- * @array: array to sort
- * @size: left index of the array
+ * merge_sort - function that sorts an array of integers in ascending order
+ * using the Merge sort algorithm
+ * @array: pointer to the array of size "size"
+ * @size: size of the array
  */
+
 void merge_sort(int *array, size_t size)
 {
+	size_t i = 0;
+	int *buf = NULL;
 
-	if ((!array) || size < 2)
+	if (!array || size < 2)
 		return;
 
-	mergeSort(array, 0, (size - 1));
+	buf = malloc(sizeof(int) * size);
+	if (buf == NULL)
+		return;
+	for (i = 0; i < size; i++)
+		buf[i] = array[i];
+	split_array(array, buf, 0, size);
+	free(buf);
 }
-/**
- * mergeSort - merge sort auxiliary function
- * @array: array to sort
- * @left: left index of the array
- * @right: right index of the array
- */
-void mergeSort(int *array, size_t left, size_t right)
-{
-	size_t mid;
 
-	if (left < right)
+/**
+ * split_array - function that splits an array of integers
+ * @array: pointer to the array
+ * @buf: pointer to an empty array
+ * @startIdx: first index of the array
+ * @endIdx: last index of the array
+ */
+
+void split_array(int *array, int *buf, size_t startIdx, size_t endIdx)
+{
+	int midIdx = 0;
+
+	if (endIdx - startIdx > 1)
 	{
-		mid = left + (right - left) / 2;
-		mergeSort(array, left, mid);
-		mergeSort(array, mid + 1, right);
-		merge(array, left, mid, right);
+		midIdx = (startIdx + endIdx) / 2;
+		split_array(buf, array, startIdx, midIdx);
+		split_array(buf, array, midIdx, endIdx);
+		merge_array(buf, array, startIdx, endIdx);
 	}
 }
-/**
- * merge - merge sort
- * @arr: array to sort
- * @p: left index of the array
- * @q: middle of the array
- * @r: right index of the array
- */
-void merge(int list[], size_t low, size_t mid, size_t high)
-{
-	size_t i, mi, k, lo;
-	int temp[50];
 
-	lo = low;
-	i = low;
-	mi = mid + 1;
+/**
+ * merge_array - function that merges two array segments of integers
+ * @array: pointer to the array
+ * @buf: pointer to an empty array
+ * @startIdx: first index of the array
+ * @endIdx: last index of the array
+ */
+
+void merge_array(int *array, int *buf, size_t startIdx, size_t endIdx)
+{
+	size_t i = 0, j = 0, k = 0, midIdx = 0;
+
+	i = startIdx;
+	midIdx = (startIdx + endIdx) / 2;
+	j = midIdx;
 
 	printf("Merging...\n");
-	
-	while ((lo <= mid) && (mi <= high))
-	{
-		if (list[lo] <= list[mi])
-		{
-			temp[i] = list[lo];
-			lo++;
-			
-		}
-		else
-		{
-			temp[i] = list[mi];
-			mi++;
-		}
-		i++;
-	}
-	if (lo > mid)
-	{
-		for (k = mi; k <= high; k++)
-		{
-			temp[i] = list[k];
-			i++;
-		}
-	}
-	else
-	{
-		for (k = lo; k <= mid; k++)
-		{
-			temp[i] = list[k];
-			i++;
-		}
-	}
-	for (k = low; k <= high; k++)
-	{
-		list[k] = temp[k];
-	}
 	printf("[left]: ");
-	print_array(temp + lo, mi - lo);
-	printf("[right]: ");
-	/*print_array(temp + mi, lo - mi);*/
-}
-
-/*
-void merge(int *arr, int p, int q, int r)
-{
-	int n1 = q - p + 1;
-	int n2 = r - q;
-	int i, j, k, count = 0, index = 0;
-	int *L, *M;
-
-	printf("Merging...\n");
-	L = malloc(sizeof(int) * n1);
-	M = malloc(sizeof(int) * n2);
-	printf("[left]: ");
-	for (i = 0; i < n1; i++)
+	for (k = startIdx; k < midIdx; k++)
 	{
-		L[i] = arr[p + i];
-		if (i + 1 == n1)
-			printf("%d\n", L[i]);
+		if (k < midIdx - 1)
+			printf("%d, ", array[k]);
 		else
-			printf("%d, ", L[i]);
+			printf("%d\n", array[k]);
 	}
 	printf("[right]: ");
-	for (j = 0; j < n2; j++)
+	for (k = midIdx; k < endIdx; k++)
 	{
-		M[j] = arr[q + 1 + j];
-		if (j + 1 == n2)
-			printf("%d\n", M[j]);
+		if (k < endIdx - 1)
+			printf("%d, ", array[k]);
 		else
-			printf("%d, ", M[j]);
+			printf("%d\n", array[k]);
 	}
-	i = 0, j = 0, k = p;
-	while (i < n1 && j < n2)
+	for (k = startIdx; k < endIdx; k++)
 	{
-		if (L[i] <= M[j])
-		{
-			arr[k] = L[i];
-			count++;
-			i++;
-		}
+		if (i < midIdx && (j >= endIdx || array[i] <= array[j]))
+			buf[k] = array[i], i++;
 		else
-		{
-			arr[k] = M[j];
-			count++;
-			j++;
-		}
-		k++;
+			buf[k] = array[j], j++;
 	}
-	while (i < n1)
-	{
-		arr[k] = L[i];
-		count++;
-		i++;
-		k++;
-	}
-	while (j < n2)
-	{
-		arr[k] = M[j];
-		count++;
-		j++;
-		k++;
-	}
-	free(L);
-	free(M);
 	printf("[Done]: ");
-	for (index = p; index < p + count; index++)
+	for (k = startIdx; k < endIdx; k++)
 	{
-		if (index + 1 == p + count)
-			printf("%d\n", arr[index]);
+		if (k < endIdx - 1)
+			printf("%d, ", buf[k]);
 		else
-			printf("%d, ", arr[index]);
+			printf("%d\n", buf[k]);
 	}
 }
-*/

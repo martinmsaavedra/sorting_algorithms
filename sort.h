@@ -37,9 +37,9 @@ void counting_sort(int *array, size_t size);
 int find_max(int *array, size_t size);
 int *define_array(int max, size_t size);
 void merge_sort(int *array, size_t size);
-void mergeSort(int *array, size_t left, size_t right);
-void merge(int list[], size_t low, size_t mid, size_t high);
-/*void merge(int *arr, int p, int q, int r);*/
+void split_array(int *array, int *buf, size_t startIdx, size_t endIdx);
+void merge_array(int *array, int *buf, size_t startIdx, size_t endIdx);
+
 int LSD(int *array, size_t size);
 int largest_int(int *array, size_t size);
 int is_in(int *array, size_t size, int num);
